@@ -15,20 +15,20 @@ router.get("/", (req, res) => {
     });
 });
 
-
-// todo: NOT FUNCTIONAL 
 router.get("/:id", (req, res) => {
-  Category.fineOne({
+  Category.findOne({
     where: {
       id: req.params.id,
     },
-    include: {
-      model: Product,
-      attributes: ["category_id"],
-    },
+    include: [
+      {
+        model: Product,
+        attributes: ["category_id"],
+      },
+    ],
   })
-    .then(categoryData => res.json(categoryData))
-    .catch(err => {
+    .then((categoryData) => res.json(categoryData))
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -63,13 +63,12 @@ router.put("/:id", (req, res) => {
     });
 });
 
-
-// NOT FUNCTIONAL
+// todo NOT FUNCTIONAL
 router.delete("/:id", (req, res) => {
-  Category.delete({
+  Category.destroy({
     where: { id: req.params.id },
   })
-    .then((categoryData) => {
+    .then(categoryData => {
       if (!categoryData) {
         res.status(404).json({ message: "no category found with that id" });
         return;
