@@ -11,7 +11,6 @@ router.get("/", (req, res) => {
     .then((categoryData) => res.json(categoryData))
     .catch((err) => {
       console.log(err);
-      console.log("category-routes.js error line 14");
       res.status(500).json(err);
     });
 });
@@ -23,13 +22,12 @@ router.get("/:id", (req, res) => {
     },
     include: {
       model: Product,
-      attributes: [category_id],
+      attributes: ["category_id"],
     },
   })
     .then((categoryData) => res.json(categoryData))
     .catch((err) => {
       console.log(err);
-      console.log("category-routes.js error line 32");
       res.status(500).json(err);
     });
 });
@@ -41,7 +39,6 @@ router.post("/", (req, res) => {
     .then((categoryData) => res.json(categoryData))
     .catch((err) => {
       console.log(err);
-      console.log("category-routes.js error line 44");
       res.status(500).json(err);
     });
 });
@@ -60,7 +57,6 @@ router.put("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      console.log("category-routes.js error line 63");
       res.status(500).json(err);
     });
 });
