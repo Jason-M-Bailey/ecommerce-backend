@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 
-// NOT FUNCTIONAL 
+// todo: NOT FUNCTIONAL 
 router.get("/:id", (req, res) => {
   Category.fineOne({
     where: {
