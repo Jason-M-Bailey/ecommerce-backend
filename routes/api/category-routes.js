@@ -15,6 +15,8 @@ router.get("/", (req, res) => {
     });
 });
 
+
+// NOT FUNCTIONAL 
 router.get("/:id", (req, res) => {
   Category.fineOne({
     where: {
@@ -25,8 +27,8 @@ router.get("/:id", (req, res) => {
       attributes: ["category_id"],
     },
   })
-    .then((categoryData) => res.json(categoryData))
-    .catch((err) => {
+    .then(categoryData => res.json(categoryData))
+    .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -61,6 +63,8 @@ router.put("/:id", (req, res) => {
     });
 });
 
+
+// NOT FUNCTIONAL
 router.delete("/:id", (req, res) => {
   Category.delete({
     where: { id: req.params.id },

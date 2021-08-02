@@ -14,21 +14,32 @@ Category.hasMany(Product, {
 
 
 // todo: not sure about these and can not find any examples from bootcamp
-// Products belongToMany Tags (through ProductTag)
+// // Products belongToMany Tags (through ProductTag)
+// Product.belongsToMany(Tag, {
+//   through: {
+//     foreignKey: "product_id",
+//     model: ProductTag,
+//   },
+// });
+
+// // Tags belongToMany Products (through ProductTag)
+// Tag.belongsToMany(Product, {
+//   through: {
+//     foreignKey: "tag_id",
+//     model: ProductTag,
+//   }
+// })
+
 Product.belongsToMany(Tag, {
-  through: {
-    foreignKey: "product_id",
-    model: ProductTag,
-  },
+  foreignKey: "product_id",
+  through: ProductTag,
 });
 
-// Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
-  through: {
-    foreignKey: "tag_id",
-    model: ProductTag,
-  }
+  foreignKey: "tag_id",
+  through: ProductTag,
 })
+
 
 module.exports = {
   Product,
