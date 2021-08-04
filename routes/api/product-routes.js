@@ -64,13 +64,13 @@ router.post("/", (req, res) => {
   Product.create(req.body)
     .then((product) => {
       if (req.body.tagIds.length) {
-        const productTagIdArr = req.body.tagIds.map((tag_id) => {
+        const productTagIdArray = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
             tag_id,
           };
         });
-        return ProductTag.bulkCreate(productTagIdArr);
+        return ProductTag.bulkCreate(productTagIdArray);
       }
       res.status(200).json(product);
     })
@@ -94,6 +94,10 @@ router.put("/:id", (req, res) => {
       id: req.params.id,
     },
   })
+
+  // !
+  // ! product is not being called?
+  // !
     .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
