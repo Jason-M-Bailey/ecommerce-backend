@@ -1,16 +1,21 @@
+// start of code provided by develop folder
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 class ProductTag extends Model {}
+// end of code provided by develop folder
 
+
+// COLUMNS DEFINED BY SEED DATA
 ProductTag.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
       autoIncrement: true,
     },
+
+    // REFERENCES MODEL AND KEY CONNECTS DATA FROM OTHER TABLES
     product_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -26,6 +31,7 @@ ProductTag.init(
       },
     },
   },
+  // start of code provided by develop folder
   {
     sequelize,
     timestamps: false,
@@ -36,3 +42,4 @@ ProductTag.init(
 );
 
 module.exports = ProductTag;
+// end of code provided by develop folder

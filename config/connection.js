@@ -1,7 +1,9 @@
+// entire code provided by develop folder
+
 const Sequelize = require("sequelize");
 require("dotenv").config();
 
-// why is this process.env?
+// todo why is this process.env?
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW, {

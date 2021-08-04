@@ -1,14 +1,19 @@
+// start of code provided by develop folder
 const Product = require("./Product");
 const Category = require("./Category");
 const Tag = require("./Tag");
 const ProductTag = require("./ProductTag");
 
+// end of code provided by develop folder
+
+
+// PRODUCT BELONGSTO CATEGORY
 Product.belongsTo(Category, {
   foreignKey: "category_id",
   onDelete: 'CASCADE',
 });
 
-// Categories have many Products
+// CATEGORY HASMANY PRODUCT
 Category.hasMany(Product, {
   foreignKey: "category_id",
   onDelete: 'CASCADE',
@@ -32,22 +37,27 @@ Category.hasMany(Product, {
 //   }
 // })
 
+// PRODUCT BELONGTOMANY TAG (THROUGH PRODUCTTAG)
 Product.belongsToMany(Tag, {
   foreignKey: "product_id",
   through: ProductTag,
   onDelete: 'CASCADE',
 });
 
+// TAG BELONGTOMANY PRODUCT (THROUGH PRODUCTTAG)
 Tag.belongsToMany(Product, {
   foreignKey: "tag_id",
   through: ProductTag,
   onDelete: 'CASCADE',
 })
 
-
+//
+// start of code provided by develop folder
 module.exports = {
   Product,
   Category,
   Tag,
   ProductTag,
 };
+// end of code provided by develop folder
+//

@@ -1,7 +1,10 @@
+// start of code provided by develop folder
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 class Product extends Model {}
+// end of code provided by develop folder
 
+// COLUMNS DEFINED BY SEED DATA
 Product.init(
   {
     id: {
@@ -19,15 +22,13 @@ Product.init(
       allowNull: false,
       validate: {
         isDecimal: true,
-      }
+      },
     },
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        isDecimal: true,
-      }
     },
+    // STATE WHICH MODEL AND KEY TO CONNECT DATA
     category_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -36,6 +37,7 @@ Product.init(
       },
     },
   },
+  // start of code provided by develop folder
   {
     sequelize,
     timestamps: false,
@@ -46,3 +48,4 @@ Product.init(
 );
 
 module.exports = Product;
+// end of code provided by develop folder

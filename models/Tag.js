@@ -1,10 +1,13 @@
+// start of code provided by develop folder
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 class Tag extends Model {}
+// end of code provided by develop folder
 
+
+// COLUMNS DETERMINED BY SEED DATA
 Tag.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -15,6 +18,7 @@ Tag.init(
       type: DataTypes.STRING,
     }
   },
+  // start of code provided by develop folder
   {
     sequelize,
     timestamps: false,
@@ -25,3 +29,4 @@ Tag.init(
 );
 
 module.exports = Tag;
+// end of code provided by develop folder
