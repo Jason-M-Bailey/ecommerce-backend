@@ -57,8 +57,8 @@ router.post("/", (req, res) => {
     });
 });
 
-// 
-// UPDATE A CATEGORY BY ID 
+//
+// UPDATE A CATEGORY BY ID
 // FUNCTIONAL
 //
 router.put("/:id", (req, res) => {
@@ -74,7 +74,9 @@ router.put("/:id", (req, res) => {
   )
     .then((categoryData) => {
       if (!categoryData) {
-        res.status(404).json({ message: "no category found with that id" });
+        res
+          .status(404)
+          .json({ message: "----- no category found with that id -----" });
         return;
       }
       res.json(categoryData);
@@ -93,17 +95,17 @@ router.delete("/:id", (req, res) => {
   Category.destroy({
     where: { id: req.params.id },
   })
-    .then(categoryData => {
+    .then((categoryData) => {
       if (!categoryData) {
-        res.status(404).json({ message: "no category found with that id" });
+        res
+          .status(404)
+          .json({ message: "----- no category found with that id -----" });
         return;
       }
       res.json(categoryData);
     })
-
     .catch((err) => {
       console.log(err);
-      console.log("category-routes.js error line 82");
       res.status(500).json(err);
     });
 });

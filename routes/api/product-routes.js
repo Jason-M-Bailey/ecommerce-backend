@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// 
+//
 // GET A PRODUCT BY ID
 // FUNCTIONAL
 //
@@ -55,6 +55,12 @@ router.get("/:id", (req, res) => {
 // FUNCTIONAL
 //
 router.post("/", (req, res) => {
+  // product seed data format
+  // product_name: 'Plain T-Shirt',
+  // price: 14.99,
+  // stock: 14,
+  // category_id: 1,
+
   Product.create(req.body)
     .then((product) => {
       if (req.body.tagIds.length) {
@@ -81,7 +87,7 @@ router.post("/", (req, res) => {
 // put code is provided from the develop folder
 
 // update product
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {

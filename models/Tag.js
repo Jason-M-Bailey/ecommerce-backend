@@ -1,12 +1,14 @@
 // start of code provided by develop folder
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection.js');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection.js");
 class Tag extends Model {}
 // end of code provided by develop folder
 
-
 // COLUMNS DETERMINED BY SEED DATA
 Tag.init(
+  // tag seed data format
+  // tag_name: 'rock music',
+
   {
     id: {
       type: DataTypes.INTEGER,
@@ -16,7 +18,7 @@ Tag.init(
     },
     tag_name: {
       type: DataTypes.STRING,
-    }
+    },
   },
   // start of code provided by develop folder
   {
@@ -24,7 +26,7 @@ Tag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'tag',
+    modelName: "tag",
   }
 );
 

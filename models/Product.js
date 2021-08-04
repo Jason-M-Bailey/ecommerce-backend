@@ -6,6 +6,13 @@ class Product extends Model {}
 
 // COLUMNS DEFINED BY SEED DATA
 Product.init(
+  
+  // product seed data format
+  // product_name: 'Plain T-Shirt',
+  // price: 14.99,
+  // stock: 14,
+  // category_id: 1,
+
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,9 +27,6 @@ Product.init(
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      validate: {
-        isDecimal: true,
-      },
     },
     stock: {
       type: DataTypes.INTEGER,

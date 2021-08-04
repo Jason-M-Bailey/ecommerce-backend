@@ -4,9 +4,12 @@ const sequelize = require("../config/connection");
 class ProductTag extends Model {}
 // end of code provided by develop folder
 
-
 // COLUMNS DEFINED BY SEED DATA
 ProductTag.init(
+  // productTag seed data format
+  // product_id: 1,
+  // tag_id: 6,
+
   {
     id: {
       type: DataTypes.INTEGER,

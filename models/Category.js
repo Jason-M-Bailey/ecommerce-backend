@@ -4,16 +4,18 @@ const sequelize = require("../config/connection.js");
 class Category extends Model {}
 // end of code provided by develop folder
 
-
 // ID & CATEGORY_NAME PULLED FROM SEED DATA
 Category.init(
+
+  // category seed data format
+  // category_name: 'Shirts',
+
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      
     },
     category_name: {
       type: DataTypes.STRING,
