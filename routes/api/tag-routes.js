@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { Tag, Product, ProductTag } = require("../../models");
 
+//
+// GET ALL TAGS AND SUBSEQUENT DATA
+// FUNCTIONAL
+//
 router.get("/", (req, res) => {
   Tag.findAll({
     include: {
@@ -14,6 +18,10 @@ router.get("/", (req, res) => {
     });
 });
 
+//
+// GET ONE TAG BY ID
+// FUNCTIONAL
+//
 router.get("/:id", (req, res) => {
   Tag.findOne({
     where: {
@@ -30,6 +38,10 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//
+// CREATE A TAG
+// FUNCTIONAL
+//
 router.post("/", (req, res) => {
   Tag.create({
     tag_name: req.body.tag_name,
@@ -41,6 +53,10 @@ router.post("/", (req, res) => {
     });
 });
 
+//
+// UPDATE A TAG BY ID
+// FUNCTIONAL
+//
 router.put("/:id", (req, res) => {
   Tag.update(
     {
@@ -65,6 +81,10 @@ router.put("/:id", (req, res) => {
     });
 });
 
+// 
+// DELETE A TAG BY ID
+// FUNCTIONAL
+//
 router.delete("/:id", (req, res) => {
   Tag.destroy({
     where: {

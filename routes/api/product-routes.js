@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
+//
+// GET ALL PRODUCTS
+// FUNCTIONAL
+//
 router.get("/", (req, res) => {
   Product.findAll({
     include: [
@@ -21,6 +25,10 @@ router.get("/", (req, res) => {
     });
 });
 
+// 
+// GET A PRODUCT BY ID
+// FUNCTIONAL
+//
 router.get("/:id", (req, res) => {
   Product.findOne({
     where: { id: req.params.id },
@@ -42,6 +50,10 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//
+// CREATE A PRODUCT
+// FUNCTIONAL
+//
 router.post("/", (req, res) => {
   Product.create(req.body)
     .then((product) => {
@@ -63,6 +75,9 @@ router.post("/", (req, res) => {
     });
 });
 
+//
+// todo UPDATES PRODUCT LISTING BUT SHOWS A 400 BAD REQUEST
+//
 router.put("/:id", (req, res) => {
   Product.update(req.body, {
     where: {
@@ -97,6 +112,10 @@ router.put("/:id", (req, res) => {
     });
 });
 
+//
+// DELETE A PRODUCT BY ID
+// FUNCTIONAL
+//
 router.delete("/:id", (req, res) => {
   Product.destroy({
     where: { id: req.params.id },

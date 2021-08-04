@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { Category, Product } = require("../../models");
 
+//
+// GET ALL CATEGORIES AND SUBSEQUENT DATA
+// FUNCTIONAL
+//
 router.get("/", (req, res) => {
   Category.findAll({
     include: {
@@ -15,6 +19,10 @@ router.get("/", (req, res) => {
     });
 });
 
+//
+// GET ONE CATEGORY BY ID
+// FUNCTIONAL
+//
 router.get("/:id", (req, res) => {
   Category.findOne({
     where: {
@@ -34,6 +42,10 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//
+// CREATE A CATEGORY
+// FUNCTIONAL
+//
 router.post("/", (req, res) => {
   Category.create({
     category_name: req.body.category_name,
@@ -45,10 +57,20 @@ router.post("/", (req, res) => {
     });
 });
 
+// 
+// UPDATE A CATEGORY BY ID 
+// FUNCTIONAL
+//
 router.put("/:id", (req, res) => {
   Category.update(
-    { category_name: req.body.category_name },
-    { where: { id: req.params.id } }
+    {
+      category_name: req.body.category_name,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
   )
     .then((categoryData) => {
       if (!categoryData) {
@@ -63,7 +85,10 @@ router.put("/:id", (req, res) => {
     });
 });
 
-// todo NOT FUNCTIONAL
+//
+// DELETE ONE CATEGORY BY USING ID
+// FUNCTIONAL
+//
 router.delete("/:id", (req, res) => {
   Category.destroy({
     where: { id: req.params.id },
