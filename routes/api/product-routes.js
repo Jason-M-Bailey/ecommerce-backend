@@ -54,24 +54,28 @@ router.get("/:id", (req, res) => {
 // CREATE A PRODUCT
 // FUNCTIONAL
 //
-router.post("/", (req, res) => {
-  // product seed data format
-  // product_name: 'Plain T-Shirt',
-  // price: 14.99,
-  // stock: 14,
-  // category_id: 1,
-
+router.post('/', (req, res) => {
+  /* req.body should look like this...
+    {
+      product_name: "Basketball",
+      price: 200.00,
+      stock: 3,
+      tagIds: [1, 2, 3, 4]
+    }
+  */
   Product.create(req.body)
     .then((product) => {
+      // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
-        const productTagIdArray = req.body.tagIds.map((tag_id) => {
+        const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
             tag_id,
           };
         });
-        return ProductTag.bulkCreate(productTagIdArray);
+        return ProductTag.bulkCreate(productTagIdArr);
       }
+      // if no product tags, just respond
       res.status(200).json(product);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
@@ -81,11 +85,11 @@ router.post("/", (req, res) => {
     });
 });
 
+
 //
 // todo UPDATES PRODUCT LISTING BUT SHOWS A 400 BAD REQUEST
-//
+// update syntax in insomnia to avoid 400 bad request 
 // put code is provided from the develop folder
-
 // update product
 router.put("/:id", (req, res) => {
   // update product data
@@ -95,9 +99,6 @@ router.put("/:id", (req, res) => {
     },
   })
 
-  // !
-  // ! product is not being called?
-  // !
     .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
